@@ -184,7 +184,7 @@ export default {
       jsonDrawerVisible: false,
       generateConf: null,
       showFileName: false,
-      activeData: drawingDefalut[0],
+      activeData: drawingDefalut[0], // 当前生效的组件数据
       saveDrawingListDebounce: debounce(340, saveDrawingList),
       saveIdGlobalDebounce: debounce(340, saveIdGlobal),
       leftComponents: [
@@ -271,6 +271,7 @@ export default {
       this.activeId = element.__config__.formId
     },
     onEnd(obj) {
+      // 边缘检测
       if (obj.from !== obj.to) {
         this.activeData = tempActiveData
         this.activeId = this.idGlobal
@@ -282,6 +283,7 @@ export default {
       this.activeFormItem(clone)
     },
     cloneComponent(origin) {
+      // console.log("origin:",origin)
       const clone = deepClone(origin)
       const config = clone.__config__
       config.span = this.formConf.span // 生成代码时，会根据span做精简判断

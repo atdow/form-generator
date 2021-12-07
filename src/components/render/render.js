@@ -87,8 +87,10 @@ export default {
   },
   render(h) {
     const dataObject = makeDataObject()
+    // console.log('dataObject:', dataObject)
     const confClone = deepClone(this.conf)
     const children = []
+    // console.log('children:', children)
 
     // 如果slots文件夹存在与当前tag同名的文件，则执行文件中的代码
     mountSlotFlies.call(this, h, confClone, children)
@@ -98,7 +100,10 @@ export default {
 
     // 将json表单配置转化为vue render可以识别的 “数据对象（dataObject）”
     buildDataObject.call(this, confClone, dataObject)
-
+    // console.log('dataObject:', dataObject)
+    // console.log('children:', children)
+    // console.log('h(this.conf.__config__.tag, dataObject, children):', h(this.conf.__config__.tag, dataObject, children))
+    // return null
     return h(this.conf.__config__.tag, dataObject, children)
   }
 }
